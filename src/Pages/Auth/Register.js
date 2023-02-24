@@ -115,7 +115,7 @@ export const Register = () => {
 						type='button'
 					/>
 					<PrimaryButton
-						text='Iniciar sesión'
+						text='Registrarse'
 						type='button'
 					></PrimaryButton>
 				</div>
