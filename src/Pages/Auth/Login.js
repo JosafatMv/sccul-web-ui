@@ -1,11 +1,10 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Form as FormBt } from 'react-bootstrap';
 
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 
 import { PrimaryButton } from '../../components/PrimaryButton';
-import { SecondaryButton } from '../../components/SecondaryButton';
 import { TextInput } from '../../components/Form/TextInput';
 
 import styles from '../../assets/css/Pages/Login.module.css';
@@ -13,10 +12,6 @@ import img from '../../assets/img/Hands-Phone-1.png';
 
 export const Login = () => {
 	const navigate = useNavigate();
-
-	const handleOnCancel = () => {
-		navigate('/');
-	};
 
 	const handleOnSubmit = (values, resetForm) => {
 		console.log(values);
@@ -53,7 +48,6 @@ export const Login = () => {
 								<Form className={`${styles.loginContainer}`}>
 									<FormBt.Group className='mb-3'>
 										<TextInput
-											autoComplete='off'
 											label='Correo electrónico'
 											name='email'
 											placeholder='ejem@gmail.com'
@@ -63,7 +57,7 @@ export const Login = () => {
 										/>
 									</FormBt.Group>
 
-									<FormBt.Group className='mb-3'>
+									<FormBt.Group className='mb-4'>
 										<TextInput
 											autoComplete='off'
 											label='Contraseña'
@@ -75,26 +69,29 @@ export const Login = () => {
 												touched.password
 											}
 										/>
+
+										<Link
+											className={
+												styles.loginForgotPassword
+											}
+										>
+											¿Olvidaste tu contraseña?
+										</Link>
 									</FormBt.Group>
 
-									<SecondaryButton
-										text='Cancelar'
-										className={`${styles.loginBtn} me-3`}
-										type='button'
-										onClick={handleOnCancel}
-									/>
-									<PrimaryButton
-										className={`${styles.loginBtn} me-3`}
-										text='Iniciar sesión'
-										type='submit'
-										onClick={handleOnSubmit}
-										disabled={
-											!values.email ||
-											!values.password ||
-											!!errors.email ||
-											!!errors.password
-										}
-									/>
+									<div className='text-center'>
+										<PrimaryButton
+											text='Iniciar sesión'
+											type='submit'
+											onClick={handleOnSubmit}
+											disabled={
+												!values.email ||
+												!values.password ||
+												!!errors.email ||
+												!!errors.password
+											}
+										/>
+									</div>
 								</Form>
 							)}
 						</Formik>
