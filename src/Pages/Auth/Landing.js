@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { PrimaryButton } from '../../components/PrimaryButton';
 
@@ -30,10 +30,6 @@ export const Landing = () => {
 					text={'Iniciar sesión'}
 					onClick={handleOnClick}
 				></PrimaryButton>
-				<p>
-					¿No tienes una cuenta?{' '}
-					<Link to='register'>Registrate aquí</Link>
-				</p>
 			</div>
 		</>
 	);
