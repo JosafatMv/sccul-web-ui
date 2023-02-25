@@ -1,6 +1,6 @@
 import '../assets/css/components/SecondaryButton.css';
 
-export const SecondaryButton = ({ text, className, type, onClick }) => {
+export const SecondaryButton = ({ text, className = '', type, onClick }) => {
 	return (
 		<button
 			onClick={onClick}
