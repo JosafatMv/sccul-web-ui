@@ -1,0 +1,13 @@
+.sidebar-container {
+    width: 20%;
+    height: 100%;
+    background-color: #d30000;
+    padding: 0;
+}
+
+.navbar-container {
+    width: 80%;
+    height: 100%;
+    background-color: #002e60;
+    padding: 0;
+}
