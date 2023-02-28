@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
 					<LateralMenu></LateralMenu>
 				</Col>
 				<Col xs={10}>
-					<Container className='mt-4 ps-4'>{children}</Container>
+					<Container className='mt-4 px-4'>{children}</Container>
 				</Col>
 			</Row>
 		</Container>

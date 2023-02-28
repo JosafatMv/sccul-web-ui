@@ -1,0 +1,38 @@
+.courseContainer {
+	width: 350px;
+	height: 100%;
+	justify-content: center;
+	background-color: rgba(0, 148, 117, 0.15);
+	border-radius: 10px;
+}
+
+.courseImage {
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+}
+
+.img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.courseInfo {
+	padding: 10px 10px 5px 10px;
+}
+
+.title {
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #000;
+}
+
+.rating {
+	color: #940718;
+}
+
+.ratingCount {
+	color: rgba(0, 0, 0, 0.5);
+}
