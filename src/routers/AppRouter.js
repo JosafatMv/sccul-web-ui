@@ -18,7 +18,11 @@ export const AppRouter = () => {
 			) : (
 				<Layout>
 					<Routes>
-						<Route path='/home' element={<Home />} />
+						<Route path='/' element={<Home />} />
+						<Route
+							path='/*'
+							element={<Navigate to='/' replace />}
+						/>
 					</Routes>
 				</Layout>
 			)}

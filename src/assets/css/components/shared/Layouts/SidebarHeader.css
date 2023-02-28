@@ -1,0 +1,14 @@
+.sidebar-header-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	margin-bottom: 24px;
+	margin-top: 16px;
+}
+
+.sidebar-header-container img {
+	max-width: 100%;
+	height: auto;
+	max-height: 5rem;
+}

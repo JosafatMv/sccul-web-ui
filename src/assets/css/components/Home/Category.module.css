@@ -1,0 +1,7 @@
+.categoryBox {
+	padding: 15px;
+	background: rgba(0, 148, 117, 0.15);
+	border-radius: 10px;
+	display: inline-block;
+	font-size: 1.1em;
+}
