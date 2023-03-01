@@ -1,0 +1,26 @@
+.ratingContainer {
+	display: flex;
+	align-items: center;
+}
+
+.rating {
+	color: #940718;
+}
+
+.ratingCount {
+	color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+	.ratingStars span {
+		font-size: 20px !important;
+	}
+
+	.rating {
+		margin: 0px !important;
+	}
+
+	.ratingCount {
+		margin: 0px !important;
+	}
+}

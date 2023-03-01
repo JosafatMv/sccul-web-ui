@@ -1,4 +1,4 @@
-import '../assets/css/components/PrimaryButton.css';
+import '../../assets/css/components/PrimaryButton.css';
 
 export const PrimaryButton = ({
 	text,

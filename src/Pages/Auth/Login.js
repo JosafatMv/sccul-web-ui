@@ -4,7 +4,7 @@ import { Form as FormBt } from 'react-bootstrap';
 import { Form, Formik } from 'formik';
 import * as yup from 'yup';
 
-import { PrimaryButton } from '../../components/PrimaryButton';
+import { PrimaryButton } from '../../components/shared/PrimaryButton';
 import { TextInput } from '../../components/Form/TextInput';
 
 import styles from '../../assets/css/Pages/Login.module.css';

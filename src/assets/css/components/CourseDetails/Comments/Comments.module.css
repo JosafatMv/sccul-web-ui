@@ -1,0 +1,6 @@
+.commentsContainer {
+	height: 250px;
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+	width: 100%;
+}

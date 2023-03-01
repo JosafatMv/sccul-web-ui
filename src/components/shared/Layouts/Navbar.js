@@ -35,7 +35,7 @@ export const Navbar = () => {
 							Home
 						</Nav.Link>
 						<Nav.Link
-							href='#home'
+							href='/'
 							className='d-flex align-items-center'
 						>
 							<MdBook />

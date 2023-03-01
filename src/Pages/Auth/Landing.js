@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import { PrimaryButton } from '../../components/PrimaryButton';
+import { PrimaryButton } from '../../components/shared/PrimaryButton';
 
 import logo from '../../assets/img/logo.png';
 import loginImg from '../../assets/img/login-img.png';

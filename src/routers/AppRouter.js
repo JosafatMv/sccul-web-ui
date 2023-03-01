@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from '../components/shared/Layouts/Layout';
 import { Landing } from '../Pages/Auth/Landing';
 import { Login } from '../Pages/Auth/Login';
+import { CourseDetails } from '../Pages/CourseDetails';
 import { Home } from '../Pages/Home';
 
 export const AppRouter = () => {
@@ -19,6 +20,7 @@ export const AppRouter = () => {
 				<Layout>
 					<Routes>
 						<Route path='/' element={<Home />} />
+						<Route path='/course/:id' element={<CourseDetails />} />
 						<Route
 							path='/*'
 							element={<Navigate to='/' replace />}
