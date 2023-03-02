@@ -3,9 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Comments } from '../components/CourseDetails/Comments/Comments';
 import { Category } from '../components/shared/Category';
 import { PrimaryButton } from '../components/shared/PrimaryButton';
+import { CourseContentItem } from '../components/CourseDetails/CourseContentItem';
+import { Participants } from '../components/CourseDetails/Participants/Participants';
 
 import styles from '../assets/css/components/CourseDetails/CourseDetails.module.css';
-import { CourseContentItem } from '../components/CourseDetails/CourseContentItem';
 
 export const CourseDetails = () => {
 	const { id } = useParams();
@@ -26,7 +27,7 @@ export const CourseDetails = () => {
 				</Col>
 			</Row>
 
-			<div className='courseContainer'>
+			<div className={styles.courseContainer}>
 				<Row>
 					<Col xs={12} sm={12} md={4} lg={4}>
 						<div className={`${styles.courseImgContainer} mb-4`}>
@@ -41,7 +42,9 @@ export const CourseDetails = () => {
 						<div className='courseDescription'>
 							<h3>Información del curso</h3>
 
-							<span className='coursePrice'>$100.00 MX</span>
+							<span className={styles.coursePrice}>
+								$100.00 MX
+							</span>
 
 							<p>
 								Lorem ipsum, dolor sit amet consectetur
@@ -75,6 +78,8 @@ export const CourseDetails = () => {
 					</Col>
 				</Row>
 			</div>
+
+			<Participants />
 		</>
 	);
 };

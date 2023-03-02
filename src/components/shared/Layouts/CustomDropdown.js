@@ -19,9 +19,6 @@ export const CustomDropdown = () => {
 					<Col md={5}>
 						<Dropdown className='custom-dropdown'>
 							<Dropdown.Toggle className='d-flex align-items-center dropdown-link text-left'>
-								{/* <div className='profile-pic me-3'>
-									<img src='' alt='Profile img' />
-								</div> */}
 								<div className='profile-info'>
 									<h3>Josafat</h3>
 								</div>
@@ -33,14 +30,14 @@ export const CustomDropdown = () => {
 									className='dropdown-item'
 									onClick={handleLogout}
 								>
-									<MdAccountCircle></MdAccountCircle>
+									<MdAccountCircle className='me-1' />
 									Mi perfil
 								</Dropdown.Item>
 								<Dropdown.Item
 									className='dropdown-item'
 									onClick={handleLogout}
 								>
-									<MdLogout></MdLogout>
+									<MdLogout className='me-1' />
 									Log out
 								</Dropdown.Item>
 							</Dropdown.Menu>

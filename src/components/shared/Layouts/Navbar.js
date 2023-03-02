@@ -31,28 +31,28 @@ export const Navbar = () => {
 							href='/'
 							className='d-flex align-items-center'
 						>
-							<MdHome />
+							<MdHome className='me-1' />
 							Home
 						</Nav.Link>
 						<Nav.Link
 							href='/'
 							className='d-flex align-items-center'
 						>
-							<MdBook />
+							<MdBook className='me-1' />
 							Cursos
 						</Nav.Link>
 						<Nav.Link
 							href='#home'
 							className='d-flex align-items-center'
 						>
-							<MdCategory />
+							<MdCategory className='me-1' />
 							Categorías
 						</Nav.Link>
 						<Nav.Link
 							href='#home'
-							className='d-flex align-items-center'
+							className='d-flex align-items-center '
 						>
-							<MdAssignmentTurnedIn />
+							<MdAssignmentTurnedIn className='me-1' />
 							Encuestas
 						</Nav.Link>
 					</Nav>

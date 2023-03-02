@@ -31,3 +31,8 @@
 .courseContentList li p {
 	margin-bottom: 0px;
 }
+
+.coursePrice {
+	font-size: 1.5em;
+	color: #e4001a;
+}
