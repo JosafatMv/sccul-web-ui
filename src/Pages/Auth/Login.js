@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form as FormBt } from 'react-bootstrap';
 
 import { Form, Formik } from 'formik';
@@ -9,14 +9,14 @@ import { TextInput } from '../../components/Form/TextInput';
 
 import styles from '../../assets/css/Pages/Login.module.css';
 import img from '../../assets/img/Hands-Phone-1.png';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth/authContext';
 
 export const Login = () => {
-	const navigate = useNavigate();
+	const { login } = useContext(AuthContext);
 
 	const handleOnSubmit = (values, resetForm) => {
-		console.log(values);
-		console.log(values.email);
-		console.log(values.password);
+		login(values.email, values.password);
 	};
 
 	const objectSchema = yup.object({
@@ -83,7 +83,6 @@ export const Login = () => {
 										<PrimaryButton
 											text='Iniciar sesión'
 											type='submit'
-											onClick={handleOnSubmit}
 											disabled={
 												!values.email ||
 												!values.password ||
