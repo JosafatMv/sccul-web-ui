@@ -1,9 +1,9 @@
 //authReducer
-export const authReducer = (state = {}, action) => {
+export const authReducer = (state, action) => {
 	switch (action.type) {
 		case 'LOGIN':
 			return {
-				...action.payload,
+				...state,
 				isLogged: true,
 			};
 

@@ -1,12 +1,7 @@
 import { CustomDropdown } from './CustomDropdown';
 import '../../../assets/css/components/shared/Layouts/Navbar.css';
-import { Link } from 'react-router-dom';
-import {
-	Container,
-	Nav,
-	NavDropdown,
-	Navbar as NavbarBt,
-} from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import { Container, Nav, Navbar as NavbarBt } from 'react-bootstrap';
 import {
 	MdAssignmentTurnedIn,
 	MdBook,
@@ -27,34 +22,37 @@ export const Navbar = () => {
 				<NavbarBt.Toggle aria-controls='basic-navbar-nav' />
 				<NavbarBt.Collapse id='basic-navbar-nav'>
 					<Nav className='me-auto'>
-						<Nav.Link
-							href='/'
-							className='d-flex align-items-center'
+						<NavLink
+							to='/home'
+							className='d-flex align-items-center me-3 nav-link'
 						>
 							<MdHome className='me-1' />
 							Home
-						</Nav.Link>
-						<Nav.Link
-							href='/'
-							className='d-flex align-items-center'
+						</NavLink>
+
+						<NavLink
+							to='/'
+							className='d-flex align-items-center me-3 nav-link'
 						>
 							<MdBook className='me-1' />
 							Cursos
-						</Nav.Link>
-						<Nav.Link
-							href='#home'
-							className='d-flex align-items-center'
+						</NavLink>
+
+						<NavLink
+							to='/'
+							className='d-flex align-items-center me-3 nav-link'
 						>
 							<MdCategory className='me-1' />
 							Categorías
-						</Nav.Link>
-						<Nav.Link
-							href='#home'
-							className='d-flex align-items-center '
+						</NavLink>
+
+						<NavLink
+							to='/'
+							className='d-flex align-items-center me-3 nav-link'
 						>
 							<MdAssignmentTurnedIn className='me-1' />
 							Encuestas
-						</Nav.Link>
+						</NavLink>
 					</Nav>
 					<Nav>
 						<CustomDropdown />

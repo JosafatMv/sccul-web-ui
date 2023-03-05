@@ -1,15 +1,26 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../../context/auth/authContext';
+
 import { Col, Container, Dropdown, Row } from 'react-bootstrap';
-// Icons
+
 import { MdAccountCircle, MdLogout } from 'react-icons/md';
 import { MdArrowDropDown } from 'react-icons/md';
+
+import { showConfirmDialog } from '../../../shared/plugins/alerts';
 
 import '../../../assets/css/components/shared/Layouts/Dropdown.css';
 
 export const CustomDropdown = () => {
-	// const { name, departament, img } = useSelector((state) => state.auth);
+	const { logout } = useContext(AuthContext);
 
 	const handleLogout = () => {
-		console.log('Logout');
+		showConfirmDialog(
+			'Cerrar sesión',
+			'¿Estás seguro que deseas cerrar sesión?',
+			'Confirmar',
+			'Cancelar',
+			logout
+		);
 	};
 
 	return (

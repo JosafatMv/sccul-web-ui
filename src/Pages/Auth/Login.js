@@ -1,4 +1,8 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth/authContext';
+
 import { Link } from 'react-router-dom';
+
 import { Form as FormBt } from 'react-bootstrap';
 
 import { Form, Formik } from 'formik';
@@ -9,8 +13,6 @@ import { TextInput } from '../../components/Form/TextInput';
 
 import styles from '../../assets/css/Pages/Login.module.css';
 import img from '../../assets/img/Hands-Phone-1.png';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/auth/authContext';
 
 export const Login = () => {
 	const { login } = useContext(AuthContext);
@@ -30,7 +32,7 @@ export const Login = () => {
 		<>
 			<div className='container mt-5'>
 				<div className='row'>
-					<div className='col-6'>
+					<div className='col-12 col-md-6'>
 						<h1 className={`${styles.title} mb-4`}>
 							Iniciar sesión
 						</h1>
@@ -96,7 +98,7 @@ export const Login = () => {
 						</Formik>
 					</div>
 
-					<div className='col-6'>
+					<div className='col-6 d-none d-md-block'>
 						<div className={styles.imgContainer}>
 							<img
 								className={styles.imgLogin}

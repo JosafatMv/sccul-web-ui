@@ -1,52 +1,126 @@
-import { useReducer } from 'react';
-import { AuthContext } from './authContext';
-import { authReducer } from './authReducer';
+// import { useReducer } from 'react';
+// import { AuthContext } from './authContext';
+// import { authReducer } from './authReducer';
 
-import axios from 'axios';
+// import axios from 'axios';
 
-export const AuthContextProvider = ({ children }) => {
-	const initialState = {
-		isLogged: false,
-	};
+// export const AuthContextProvider = ({ children }) => {
+// 	const init = async () => {
+// 		// return localStorage.getItem('token')
+// 		// 	? { isLogged: await renewToken() }
+// 		// 	: { isLogged: false };
 
-	const [state, dispatch] = useReducer(authReducer, initialState);
+// 		if (localStorage.getItem('token')) {
+// 			const token = localStorage.getItem('token');
 
-	const login = async (email, password) => {
-		const dataJson = {
-			username: email,
-			password,
-		};
+// 			try {
+// 				const resp = await axios.get(
+// 					'http://localhost:8080/api/auth/renew',
+// 					{
+// 						headers: {
+// 							Authorization: `Bearer ${token}`,
+// 						},
+// 					}
+// 				);
 
-		try {
-			const data = await axios.post(
-				'http://localhost:8080/api/auth/login',
-				dataJson
-			);
+// 				console.log(resp);
 
-			console.log(data.data);
+// 				if (resp.data?.data.length > 0) {
+// 					return { isLogged: true };
+// 				}
+// 			} catch (error) {
+// 				console.log(error);
 
-			localStorage.setItem('token', data.data.data);
+// 				return { isLogged: false };
+// 			}
+// 		}
 
-			dispatch({
-				type: 'LOGIN',
-				payload: data.data,
-			});
-		} catch (error) {
-			console.log(error);
-		}
-	};
+// 		return { isLogged: false };
+// 	};
 
-	const logout = async () => {
-		localStorage.removeItem('token');
+// 	const [state, dispatch] = useReducer(authReducer, {}, async () => init());
 
-		dispatch({
-			type: 'LOGOUT',
-		});
-	};
+// 	const login = async (email, password) => {
+// 		const dataJson = {
+// 			username: email,
+// 			password,
+// 		};
 
-	return (
-		<AuthContext.Provider value={{ state, login, logout }}>
-			{children}
-		</AuthContext.Provider>
-	);
-};
+// 		try {
+// 			const data = await axios.post(
+// 				'http://localhost:8080/api/auth/login',
+// 				dataJson
+// 			);
+
+// 			localStorage.setItem('token', data.data.data);
+
+// 			dispatch({
+// 				type: 'LOGIN',
+// 			});
+// 		} catch (error) {
+// 			console.log(error);
+// 		}
+// 	};
+
+// 	const renewToken = async () => {
+// 		try {
+// 			const token = localStorage.getItem('token');
+
+// 			if (!token) {
+// 				return dispatch({
+// 					type: 'LOGOUT',
+// 				});
+// 			}
+
+// 			const resp = await axios.get(
+// 				'http://localhost:8080/api/auth/renew',
+// 				{
+// 					headers: {
+// 						Authorization: `Bearer ${token}`,
+// 					},
+// 				}
+// 			);
+
+// 			if (resp.data?.data.length > 0) {
+// 				localStorage.setItem('token', resp.data.data);
+
+// 				dispatch({
+// 					type: 'LOGIN',
+// 					payload: resp.data,
+// 				});
+
+// 				return true;
+// 			} else {
+// 				localStorage.removeItem('token');
+// 				dispatch({
+// 					type: 'LOGOUT',
+// 				});
+
+// 				return false;
+// 			}
+// 		} catch (error) {
+// 			console.log(error);
+// 			localStorage.removeItem('token');
+
+// 			dispatch({
+// 				type: 'LOGOUT',
+// 			});
+
+// 			return false;
+// 		}
+// 	};
+
+// 	const logout = async () => {
+// 		localStorage.removeItem('token');
+
+// 		dispatch({
+// 			type: 'LOGOUT',
+// 		});
+// 	};
+
+// 	return (
+// 		<AuthContext.Provider value={{ state, login, logout, renewToken }}>
+// 			{children}
+// 		</AuthContext.Provider>
+// 	);
+// };
