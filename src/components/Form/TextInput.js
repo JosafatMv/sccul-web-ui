@@ -1,13 +1,29 @@
 import { ErrorMessage, useField } from 'formik';
 import { Form } from 'react-bootstrap';
 
-export const TextInput = ({ label, ...props }) => {
+import styles from './TextInput.module.css';
+
+export const TextInput = ({ label, icon: Icon, onIconClick, ...props }) => {
 	const [field, meta] = useField(props);
 
 	return (
 		<>
 			<Form.Label htmlFor={props.id || props.name}>{label}</Form.Label>
-			<Form.Control {...field} {...props} />
+
+			<div className={styles.inputWrapper}>
+				<Form.Control {...field} {...props} />
+
+				{Icon && (
+					<div className={styles.iconWrapper}>
+						{!meta.error && (
+							<Icon
+								className={styles.inputIcon}
+								onClick={onIconClick}
+							/>
+						)}
+					</div>
+				)}
+			</div>
 
 			{!!meta.touched && meta.error && (
 				<Form.Control.Feedback type='invalid'>

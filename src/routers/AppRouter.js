@@ -11,12 +11,16 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 import { Layout } from '../components/shared/Layouts/Layout';
+import { Loader } from '../components/shared/Loader';
 
 export const AppRouter = () => {
 	const { state } = useContext(AuthContext);
 
-	const { isLogged } = state;
-	console.log(isLogged);
+	const { isLogged, isLoading } = state;
+
+	if (isLoading) {
+		return <Loader />;
+	}
 
 	return (
 		<BrowserRouter>

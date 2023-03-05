@@ -12,6 +12,12 @@ export const authReducer = (state, action) => {
 				isLogged: false,
 			};
 
+		case 'IS_LOADING':
+			return {
+				...state,
+				isLoading: action.payload,
+			};
+
 		default:
 			return state;
 	}

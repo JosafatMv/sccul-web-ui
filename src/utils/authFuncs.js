@@ -60,6 +60,15 @@ export const renewToken = async (dispatch) => {
 			}
 		} catch (error) {
 			console.log(error);
+
+			if (error.message === messages.renew.errorExpired) {
+				showSimpleAlert('Error', error.message, 'error');
+			}
+
+			if (error.message === messages.renew.errorSignature) {
+				showSimpleAlert('Error', error.message, 'error');
+			}
+
 			localStorage.removeItem('token');
 			dispatch({
 				type: 'LOGOUT',

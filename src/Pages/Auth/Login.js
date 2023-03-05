@@ -13,9 +13,16 @@ import { TextInput } from '../../components/Form/TextInput';
 
 import styles from '../../assets/css/Pages/Login.module.css';
 import img from '../../assets/img/Hands-Phone-1.png';
+import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import { useState } from 'react';
 
 export const Login = () => {
 	const { login } = useContext(AuthContext);
+
+	const [showPassword, setShowPassword] = useState(false);
+	const toggleShowPassword = () => {
+		setShowPassword(!showPassword);
+	};
 
 	const handleOnSubmit = (values, resetForm) => {
 		login(values.email, values.password);
@@ -65,11 +72,21 @@ export const Login = () => {
 											label='Contraseña'
 											name='password'
 											placeholder='*****'
-											type='password'
+											type={
+												showPassword
+													? 'text'
+													: 'password'
+											}
 											isInvalid={
 												!!errors.password &&
 												touched.password
 											}
+											icon={
+												showPassword
+													? IoMdEye
+													: IoMdEyeOff
+											}
+											onIconClick={toggleShowPassword}
 										/>
 
 										<Link
