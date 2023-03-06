@@ -18,12 +18,16 @@ export const loginPost = async (email, password) => {
 	} catch (error) {
 		const { data } = error.response;
 
+		console.log(data);
+
 		if (data.message === messages.login.errorCrendentials) {
 			showSimpleAlert('Error', data.message, 'error');
+			return null;
 		}
 
 		if (data.message === messages.login.errorServer) {
 			showSimpleAlert('Error', data.message, 'error');
+			return null;
 		}
 
 		return null;
@@ -44,8 +48,6 @@ export const renewToken = async (dispatch) => {
 				}
 			);
 
-			console.log(resp);
-
 			if (resp.data?.data.length > 0) {
 				localStorage.setItem('token', resp.data.data);
 
@@ -59,14 +61,12 @@ export const renewToken = async (dispatch) => {
 				});
 			}
 		} catch (error) {
-			console.log(error);
-
-			if (error.message === messages.renew.errorExpired) {
-				showSimpleAlert('Error', error.message, 'error');
+			if (error.response.data.message === messages.renew.errorExpired) {
+				showSimpleAlert('Error', 'Sesión expiarada', 'error');
 			}
 
-			if (error.message === messages.renew.errorSignature) {
-				showSimpleAlert('Error', error.message, 'error');
+			if (error.response.data.message === messages.renew.errorSignature) {
+				showSimpleAlert('Error', error.response.data.message, 'error');
 			}
 
 			localStorage.removeItem('token');

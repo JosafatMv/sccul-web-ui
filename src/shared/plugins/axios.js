@@ -9,11 +9,15 @@ const requestHandler = (request) => {
 	request.headers['Accept'] = 'application/json';
 	request.headers['Content-Type'] = 'application/json';
 
-	const session = JSON.parse(localStorage.getItem('user')) || null;
-	if (session?.logged) {
-		request.headers['Authorization'] = `Bearer ${session.token}`;
-	}
+	// const session = JSON.parse(localStorage.getItem('user')) || null;
+	// if (session?.logged) {
+	// 	request.headers['Authorization'] = `Bearer ${session.token}`;
+	// }
 
+	const session = localStorage.getItem('token') || null;
+	if (session) {
+		request.headers['Authorization'] = `Bearer ${session}`;
+	}
 	return request;
 };
 
@@ -25,14 +29,14 @@ const successRespondeHandler = (response) => {
 	return Promise.resolve(response.data);
 };
 
-instance.interceptor.request.use(
+instance.interceptors.request.use(
 	(request) => requestHandler(request),
 	(error) => {
 		return Promise.reject(error);
 	}
 );
 
-instance.interceptor.response.use(
+instance.interceptors.response.use(
 	(request) => successRespondeHandler(request),
 	(error) => errorResponseHandler(error)
 );

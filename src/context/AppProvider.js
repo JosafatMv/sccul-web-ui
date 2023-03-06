@@ -1,9 +1,9 @@
-import { AuthContextProvider } from './auth/AuthContextProvider';
+import { CourseContextProvider } from './course/CourseContextProvider';
 
 export const AppProvider = ({ children }) => {
 	return (
 		<>
-			<AuthContextProvider>{children}</AuthContextProvider>
+			<CourseContextProvider>{children}</CourseContextProvider>
 		</>
 	);
 };

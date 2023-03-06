@@ -8,27 +8,30 @@ import Form from 'react-bootstrap/Form';
 import { PrimaryButton } from '../../shared/PrimaryButton';
 
 export const TableParticipants = ({ data }) => {
+	//TODO: Cambiar el id por numero de como se itera en el map
+	//TODO: Cambiar el lastname por si tiene encuesta o no
+	//TODO: En el name poner el nombre completo (name, surname y lastname)
 	const columns = useMemo(
 		() => [
 			{
 				Header: '#',
-				accessor: 'numero',
+				accessor: 'id',
 			},
 			{
 				Header: 'Nombre',
-				accessor: 'nombre',
+				accessor: 'name',
 			},
 			{
 				Header: 'Correo Electrónico',
-				accessor: 'correoElectronico',
+				accessor: 'email',
 			},
 			{
 				Header: 'Teléfono',
-				accessor: 'telefono',
+				accessor: 'phoneNumber',
 			},
 			{
 				Header: 'Encuesta',
-				accessor: 'encuesta',
+				accessor: 'lastname',
 				Cell: ({ value }) => (
 					<Button
 						variant='primary'
