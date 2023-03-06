@@ -1,4 +1,8 @@
 //useContext hook
 import { createContext } from 'react';
 
-export const AuthContext = createContext();
+const initialState = {
+	isLogged: false,
+};
+
+export const AuthContext = createContext(initialState);

@@ -12,6 +12,7 @@ import { PublicRoute } from './PublicRoute';
 
 import { Layout } from '../components/shared/Layouts/Layout';
 import { Loader } from '../components/shared/Loader';
+import {Profile} from "../Pages/Profile";
 
 export const AppRouter = () => {
 	const { state } = useContext(AuthContext);
@@ -29,6 +30,10 @@ export const AppRouter = () => {
 					<Routes>
 						<Route exact path='/' element={<PrivateRoute />}>
 							<Route exact path='/' element={<Home />} />
+						</Route>
+
+						<Route exact path='/profile' element={<PrivateRoute />}>
+							<Route exact path='/profile' element={<Profile />} />
 						</Route>
 
 						<Route

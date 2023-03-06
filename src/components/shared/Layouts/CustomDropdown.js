@@ -9,8 +9,10 @@ import { MdArrowDropDown } from 'react-icons/md';
 import { showConfirmDialog } from '../../../shared/plugins/alerts';
 
 import '../../../assets/css/components/shared/Layouts/Dropdown.css';
+import {useNavigate} from "react-router-dom";
 
 export const CustomDropdown = () => {
+	const navigate = useNavigate();
 	const { logout } = useContext(AuthContext);
 
 	const handleLogout = () => {
@@ -22,6 +24,11 @@ export const CustomDropdown = () => {
 			logout
 		);
 	};
+
+	const handleProfile = () => {
+		navigate('/profile')
+
+	}
 
 	return (
 		<div className='dropdown__content'>
@@ -39,7 +46,7 @@ export const CustomDropdown = () => {
 							<Dropdown.Menu>
 								<Dropdown.Item
 									className='dropdown-item'
-									onClick={handleLogout}
+									onClick={handleProfile}
 								>
 									<MdAccountCircle className='me-1' />
 									Mi perfil
