@@ -60,6 +60,11 @@ export const renewToken = async (dispatch) => {
 					type: 'LOGOUT',
 				});
 			}
+
+			dispatch({
+				type: 'IS_LOADING',
+				payload: false,
+			});
 		} catch (error) {
 			if (error.response.data.message === messages.renew.errorExpired) {
 				showSimpleAlert('Error', 'Sesión expiarada', 'error');
@@ -72,6 +77,11 @@ export const renewToken = async (dispatch) => {
 			localStorage.removeItem('token');
 			dispatch({
 				type: 'LOGOUT',
+			});
+
+			dispatch({
+				type: 'IS_LOADING',
+				payload: false,
 			});
 		}
 	} else {

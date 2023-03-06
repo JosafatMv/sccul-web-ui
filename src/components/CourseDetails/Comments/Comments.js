@@ -16,7 +16,10 @@ export const Comments = ({ comments, scores }) => {
 	return (
 		<>
 			<h3>
-				Comentarios <span className={styles.commentsCount}>(10)</span>{' '}
+				Comentarios{' '}
+				<span className={styles.commentsCount}>
+					({comments.length})
+				</span>
 			</h3>
 
 			<div className={styles.commentsContainer}>

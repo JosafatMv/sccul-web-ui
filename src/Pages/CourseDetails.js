@@ -22,9 +22,6 @@ export const CourseDetails = () => {
 		getCourse(id);
 	}, []);
 
-	console.log(course);
-	console.log(isLoading);
-
 	if (isLoading) {
 		return <Loader />;
 	}
@@ -40,6 +37,15 @@ export const CourseDetails = () => {
 
 		//return users from purchased
 		return purchased.map((inscription) => inscription.user);
+	};
+
+	const orderSections = () => {
+		return course.sections.sort((a, b) => a.number - b.number);
+	};
+
+	const calcPrice = () => {
+		const { price, discount } = course;
+		return price - price * (discount / 100);
 	};
 
 	return (
@@ -69,7 +75,7 @@ export const CourseDetails = () => {
 							<h3>Información del curso</h3>
 
 							<span className={styles.coursePrice}>
-								${course.price} MX
+								${calcPrice()} MX
 							</span>
 
 							<p>{course.description}</p>
@@ -87,10 +93,12 @@ export const CourseDetails = () => {
 						<div className='courseContent'>
 							<h3>Contenido del curso</h3>
 							<ul className={styles.courseContentList}>
-								{course.sections.map((section) => (
+								{orderSections().map((section) => (
 									<CourseContentItem
 										key={section.id}
 										name={section.name}
+										number={section.number}
+										duration={section.duration}
 										className='mb-2'
 									/>
 								))}
@@ -107,7 +115,10 @@ export const CourseDetails = () => {
 				</Row>
 			</div>
 
-			<Participants participants={filterInscriptions()} />
+			<Participants
+				participants={filterInscriptions()}
+				scores={course.scores}
+			/>
 		</>
 	);
 };

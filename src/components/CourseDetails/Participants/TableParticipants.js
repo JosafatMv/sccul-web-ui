@@ -8,9 +8,13 @@ import Form from 'react-bootstrap/Form';
 import { PrimaryButton } from '../../shared/PrimaryButton';
 
 export const TableParticipants = ({ data }) => {
-	//TODO: Cambiar el id por numero de como se itera en el map
 	//TODO: Cambiar el lastname por si tiene encuesta o no
 	//TODO: En el name poner el nombre completo (name, surname y lastname)
+
+	const handleShowSurvey = (id) => {
+		console.log(id);
+	};
+
 	const columns = useMemo(
 		() => [
 			{
@@ -31,15 +35,20 @@ export const TableParticipants = ({ data }) => {
 			},
 			{
 				Header: 'Encuesta',
-				accessor: 'lastname',
-				Cell: ({ value }) => (
-					<Button
-						variant='primary'
-						onClick={() => console.log(value)}
-					>
-						Ver Encuesta
-					</Button>
-				),
+				accessor: 'hasSurvey',
+				Cell: ({ value }) =>
+					value.hasSurvey ? (
+						<Button
+							variant='primary'
+							onClick={() => handleShowSurvey(value.id)}
+						>
+							Ver respuestas
+						</Button>
+					) : (
+						<Button variant='outline-secondary' disabled>
+							No ha contestado la encuesta
+						</Button>
+					),
 			},
 		],
 		[]

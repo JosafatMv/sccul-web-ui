@@ -14,7 +14,7 @@ function App() {
 
 	const [state, dispatch] = useReducer(authReducer, {
 		isLogged: false,
-		isLoading: false,
+		isLoading: true,
 	});
 
 	useEffect(() => {
