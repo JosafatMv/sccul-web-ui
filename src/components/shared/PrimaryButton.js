@@ -16,6 +16,7 @@ export const PrimaryButton = ({
 			type={type}
 			disabled={disabled}
 		>
+
 			{text}
 		</button>
 	);
