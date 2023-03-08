@@ -10,7 +10,7 @@ export const loginPost = async (email, password) => {
 
 	try {
 		const data = await axios.post(
-			'http://localhost:8080/api/auth/login',
+			'http://localhost:8080/api/auth/web/login',
 			dataJson
 		);
 
@@ -29,6 +29,8 @@ export const loginPost = async (email, password) => {
 			showSimpleAlert('Error', data.message, 'error');
 			return null;
 		}
+
+		showSimpleAlert('Error', data.message, 'error');
 
 		return null;
 	}

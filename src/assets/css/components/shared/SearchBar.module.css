@@ -1,0 +1,39 @@
+.searchBarContainer {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+.searchBarInput {
+	background-color: rgba(0, 148, 117, 0.15);
+	border-radius: 5px;
+	color: #000;
+	border: none;
+	height: 40px;
+	padding: 10px 40px 10px 10px;
+	flex: 1;
+
+	padding-left: 40px;
+}
+
+.searchBarIcon {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+	font-size: 24px;
+	color: #000;
+	appearance: none;
+	border: none;
+	outline: none;
+}
+
+@media screen and (max-width: 576px) {
+	.searchBarInput {
+		font-size: 14px;
+	}
+
+	.searchBarIcon {
+		font-size: 20px;
+	}
+}

@@ -13,6 +13,7 @@ import { CourseContext } from '../context/course/CourseContext';
 import { Loader } from '../components/shared/Loader';
 import { getCategories } from '../utils/getCategories';
 import { useState } from 'react';
+import { SearchBar } from '../components/shared/SearchBar';
 
 export const Home = () => {
 	const navigate = useNavigate();
@@ -21,10 +22,10 @@ export const Home = () => {
 
 	const [categories, setCategories] = useState([]);
 	const [isLoadingCategories, setIsLoadingCategories] = useState(true);
+	const [coursesFiltered, setCoursesFiltered] = useState();
 
 	useEffect(() => {
 		getCourses();
-
 		const getCategoriesFromApi = async () => {
 			const categories = await getCategories();
 			setCategories(categories);
@@ -35,9 +36,13 @@ export const Home = () => {
 		setIsLoadingCategories(false);
 	}, []);
 
+	useEffect(() => {
+		setCoursesFiltered(courses);
+	}, [courses]);
+
 	// imgSrc, title, rating, participants, onClick
 
-	if (isLoading || isLoadingCategories) {
+	if (isLoading || isLoadingCategories || !coursesFiltered) {
 		return <Loader />;
 	}
 
@@ -99,9 +104,14 @@ export const Home = () => {
 					</Col>
 				</Row>
 
+				<SearchBar
+					courses={courses}
+					setCoursesFiltered={setCoursesFiltered}
+				/>
+
 				<div className={`${styles.coursesContainer} pt-2`}>
 					<Row>
-						{courses.map((course) => {
+						{coursesFiltered.map((course) => {
 							return (
 								<Col
 									xs={12}
