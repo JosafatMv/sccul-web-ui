@@ -53,7 +53,7 @@ export const Home = () => {
 	}
 
 	const handleManageCategories = () => {
-		console.log('Gestionar categorias');
+		navigate('/categories');
 	};
 
 	const handleManageCourses = () => {

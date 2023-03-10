@@ -68,11 +68,13 @@ export const renewToken = async (dispatch) => {
 				payload: false,
 			});
 		} catch (error) {
-			if (error.response.data.message === messages.renew.errorExpired) {
+			if (error.response?.data.message === messages.renew.errorExpired) {
 				showSimpleAlert('Error', 'Sesión expiarada', 'error');
 			}
 
-			if (error.response.data.message === messages.renew.errorSignature) {
+			if (
+				error.response?.data.message === messages.renew.errorSignature
+			) {
 				showSimpleAlert('Error', error.response.data.message, 'error');
 			}
 

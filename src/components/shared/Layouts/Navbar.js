@@ -1,5 +1,4 @@
 import { CustomDropdown } from './CustomDropdown';
-import '../../../assets/css/components/shared/Layouts/Navbar.css';
 import { NavLink } from 'react-router-dom';
 import { Container, Nav, Navbar as NavbarBt } from 'react-bootstrap';
 import {
@@ -8,6 +7,8 @@ import {
 	MdCategory,
 	MdHome,
 } from 'react-icons/md';
+
+import '../../../assets/css/components/shared/Layouts/Navbar.css';
 
 export const Navbar = () => {
 	return (
@@ -39,7 +40,7 @@ export const Navbar = () => {
 						</NavLink>
 
 						<NavLink
-							to='/'
+							to='/categories'
 							className='d-flex align-items-center me-3 nav-link'
 						>
 							<MdCategory className='me-1' />

@@ -13,6 +13,7 @@ import { PublicRoute } from './PublicRoute';
 import { Layout } from '../components/shared/Layouts/Layout';
 import { Loader } from '../components/shared/Loader';
 import { Profile } from '../Pages/Profile';
+import { Categories } from '../Pages/Categories/Categories';
 
 export const AppRouter = () => {
 	const { state } = useContext(AuthContext);
@@ -49,6 +50,18 @@ export const AppRouter = () => {
 								exact
 								path='/course/:id'
 								element={<CourseDetails />}
+							/>
+						</Route>
+
+						<Route
+							exact
+							path='/categories'
+							element={<PrivateRoute />}
+						>
+							<Route
+								exact
+								path='/categories'
+								element={<Categories />}
 							/>
 						</Route>
 

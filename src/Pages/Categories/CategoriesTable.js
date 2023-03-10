@@ -1,59 +1,52 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useTable, useSortBy, usePagination } from 'react-table';
+import { Table, Button, Form } from 'react-bootstrap';
+import { MdEdit, MdArrowDownward, MdArrowUpward } from 'react-icons/md';
+import { PrimaryButton } from '../../components/shared/PrimaryButton';
 
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+const COLUMNS = [
+	{
+		Header: '#',
+		accessor: 'id',
+		sortType: 'basic',
+		Cell: ({ row }) => <div>{row.index + 1}</div>,
+	},
+	{
+		Header: 'Nombre',
+		accessor: 'name',
+		sortType: 'basic',
+	},
+	{
+		Header: 'Editar',
+		accessor: 'edit',
+		Cell: ({ row }) => (
+			<Button
+				variant='primary'
+				disabled={row.original.status === 'inactive'}
+			>
+				<MdEdit />
+			</Button>
+		),
+	},
+	{
+		Header: 'Estado',
+		accessor: 'status',
+		Cell: ({ row }) => (
+			<Button variant={row.original.status ? 'success' : 'danger'}>
+				{row.original.status ? 'Activo' : 'Inactivo'}
+			</Button>
+		),
+	},
+];
 
-import { PrimaryButton } from '../../shared/PrimaryButton';
+export const CategoriesTable = ({ dataTable }) => {
+	const columns = useMemo(() => COLUMNS, []);
+	const data = useMemo(() => dataTable, [dataTable]);
 
-export const TableParticipants = ({ data }) => {
-	//TODO: Cambiar el lastname por si tiene encuesta o no
-	//TODO: En el name poner el nombre completo (name, surname y lastname)
-
-	const handleShowSurvey = (id) => {
-		console.log(id);
-	};
-
-	const columns = useMemo(
-		() => [
-			{
-				Header: '#',
-				accessor: 'id',
-				sortType: 'basic',
-				Cell: ({ row }) => <div>{row.index + 1}</div>,
-			},
-			{
-				Header: 'Nombre',
-				accessor: 'name',
-			},
-			{
-				Header: 'Correo Electrónico',
-				accessor: 'email',
-			},
-			{
-				Header: 'Teléfono',
-				accessor: 'phoneNumber',
-			},
-			{
-				Header: 'Encuesta',
-				accessor: 'hasSurvey',
-				Cell: ({ value }) =>
-					value.hasSurvey ? (
-						<Button
-							variant='primary'
-							onClick={() => handleShowSurvey(value.id)}
-						>
-							Ver respuestas
-						</Button>
-					) : (
-						<Button variant='outline-secondary' disabled>
-							No ha contestado la encuesta
-						</Button>
-					),
-			},
-		],
-		[]
+	const tableInstance = useTable(
+		{ columns, data, initialState: { pageIndex: 0, pageSize: 10 } },
+		useSortBy,
+		usePagination
 	);
 
 	const {
@@ -69,18 +62,10 @@ export const TableParticipants = ({ data }) => {
 		pageOptions,
 		setPageSize,
 		state: { pageIndex, pageSize },
-	} = useTable(
-		{
-			columns,
-			data,
-			initialState: { pageIndex: 0, pageSize: 10 },
-		},
-		useSortBy,
-		usePagination
-	);
+	} = tableInstance;
 
 	return (
-		<div>
+		<>
 			<Table
 				striped
 				hover
@@ -96,15 +81,19 @@ export const TableParticipants = ({ data }) => {
 									{...column.getHeaderProps(
 										column.getSortByToggleProps()
 									)}
-									className={
-										column.isSorted
-											? column.isSortedDesc
-												? 'desc'
-												: 'asc'
-											: ''
-									}
 								>
 									{column.render('Header')}
+									<span>
+										{column.isSorted ? (
+											column.isSortedDesc ? (
+												<MdArrowDownward color='000' />
+											) : (
+												<MdArrowUpward color='000' />
+											)
+										) : (
+											''
+										)}
+									</span>
 								</th>
 							))}
 						</tr>
@@ -161,6 +150,6 @@ export const TableParticipants = ({ data }) => {
 					))}
 				</Form.Select>
 			</div>
-		</div>
+		</>
 	);
 };

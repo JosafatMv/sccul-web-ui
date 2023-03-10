@@ -26,7 +26,7 @@ export const TextInput = ({ label, icon: Icon, onIconClick, ...props }) => {
 			</div>
 
 			{!!meta.touched && meta.error && (
-				<Form.Control.Feedback type='invalid'>
+				<Form.Control.Feedback type='invalid' className='d-block'>
 					<ErrorMessage name={props.name} />
 				</Form.Control.Feedback>
 			)}
