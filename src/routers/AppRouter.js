@@ -14,6 +14,7 @@ import { Layout } from '../components/shared/Layouts/Layout';
 import { Loader } from '../components/shared/Loader';
 import { Profile } from '../Pages/Profile';
 import { Categories } from '../Pages/Categories/Categories';
+import { Courses } from '../Pages/Courses/Courses';
 
 export const AppRouter = () => {
 	const { state } = useContext(AuthContext);
@@ -62,6 +63,14 @@ export const AppRouter = () => {
 								exact
 								path='/categories'
 								element={<Categories />}
+							/>
+						</Route>
+
+						<Route exact path='/courses' element={<Courses />}>
+							<Route
+								exact
+								path='/courses'
+								element={<Courses />}
 							/>
 						</Route>
 
