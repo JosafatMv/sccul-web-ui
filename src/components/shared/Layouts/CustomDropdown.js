@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import {useNavigate} from "react-router-dom";
 import { AuthContext } from '../../../context/auth/authContext';
 
 import { Col, Container, Dropdown, Row } from 'react-bootstrap';
@@ -9,7 +10,6 @@ import { MdArrowDropDown } from 'react-icons/md';
 import { showConfirmDialog } from '../../../shared/plugins/alerts';
 
 import '../../../assets/css/components/shared/Layouts/Dropdown.css';
-import {useNavigate} from "react-router-dom";
 
 export const CustomDropdown = () => {
 	const navigate = useNavigate();

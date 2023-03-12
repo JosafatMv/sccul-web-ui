@@ -32,7 +32,7 @@ export const Navbar = () => {
 						</NavLink>
 
 						<NavLink
-							to='/'
+							to='/courses'
 							className='d-flex align-items-center me-3 nav-link'
 						>
 							<MdBook className='me-1' />

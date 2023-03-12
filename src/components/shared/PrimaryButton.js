@@ -6,6 +6,7 @@ export const PrimaryButton = ({
 	className = '',
 	type,
 	disabled,
+	children,
 }) => {
 	const isDisabled = () => (disabled ? 'primary-btn-disabled' : '');
 
@@ -16,8 +17,8 @@ export const PrimaryButton = ({
 			type={type}
 			disabled={disabled}
 		>
-
 			{text}
+			{children && children}
 		</button>
 	);
 };

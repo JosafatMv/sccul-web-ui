@@ -20,7 +20,7 @@ export const getColumns = (handleEditCategory, handleOnChangeStatus) => {
 			Cell: ({ row }) => (
 				<Button
 					variant='primary'
-					disabled={row.original.status === 'inactive'}
+					disabled={row.original.status === 0}
 					onClick={() => handleEditCategory(row.original)}
 				>
 					<MdEdit />

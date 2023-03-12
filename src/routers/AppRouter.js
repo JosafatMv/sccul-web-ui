@@ -15,6 +15,7 @@ import { Loader } from '../components/shared/Loader';
 import { Profile } from '../Pages/Profile';
 import { Categories } from '../Pages/Categories/Categories';
 import { Courses } from '../Pages/Courses/Courses';
+import { CourseRegister } from '../Pages/Courses/CourseRegister/CourseRegister';
 
 export const AppRouter = () => {
 	const { state } = useContext(AuthContext);
@@ -71,6 +72,18 @@ export const AppRouter = () => {
 								exact
 								path='/courses'
 								element={<Courses />}
+							/>
+						</Route>
+
+						<Route
+							exact
+							path='/course/register'
+							element={<CourseRegister />}
+						>
+							<Route
+								exact
+								path='/course/register'
+								element={<CourseRegister />}
 							/>
 						</Route>
 
