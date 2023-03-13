@@ -1,31 +1,24 @@
-import React, { useState } from 'react';
-import styles from './ImageUpload.module.css';
 import { MdCloudUpload } from 'react-icons/md';
 import { ErrorMessage, useField } from 'formik';
 import { Form } from 'react-bootstrap';
 
+import styles from './ImageUpload.module.css';
+
 export const ImageUpload = (props) => {
-	// const [fileName, setFileName] = useState('');
-	// const [fileExtension, setFileExtension] = useState('');
-	// const [fileUrl, setFileUrl] = useState('');
-
 	const [field, meta] = useField(props);
-
-	// const handleFileChange = (e) => {
-	// 	const file = e.target.files[0];
-	// 	if (file) {
-	// 		setFileName(file.name);
-	// 		setFileExtension(file.name.split('.').pop());
-	// 		setFileUrl(URL.createObjectURL(file));
-	// 	}
-	// };
 
 	const getExtension = (fileName) => {
 		return fileName.split('.').pop();
 	};
 
 	const getFileName = (fileName) => {
-		return fileName.split('.').slice(0, -1).join('.');
+		return fileName.split('.').slice(0, -1).join('.').split('\\').pop();
+	};
+
+	const validateVideoExtension = (fileName) => {
+		const allowedExtensions = ['jpeg', 'png', 'jpg'];
+		const extension = getExtension(fileName);
+		return allowedExtensions.includes(extension);
 	};
 
 	return (
@@ -34,8 +27,7 @@ export const ImageUpload = (props) => {
 				<div className={styles.uploadWrapper}>
 					<Form.Control
 						type='file'
-						accept='image/*'
-						// onChange={handleFileChange}
+						accept='image/jpeg,image/png,image/jpg'
 						className={styles.fileInput}
 						{...props}
 						{...field}
@@ -45,11 +37,8 @@ export const ImageUpload = (props) => {
 						<p className='m-0'>Selecciona una imagen</p>
 					</div>
 				</div>
-				{field.value && (
+				{field.value && validateVideoExtension(field.value) && (
 					<div className={styles.previewWrapper}>
-						{/* <div className={styles.previewImage}>
-						<img src={fileUrl} alt='preview' />
-					</div> */}
 						<div className={styles.previewInfo}>
 							<div className={styles.fileExtension}>
 								<div className={styles.extensionCircle}>

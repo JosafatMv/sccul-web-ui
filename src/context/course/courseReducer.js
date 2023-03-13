@@ -12,6 +12,18 @@ export const courseReducer = (state, action) => {
 				course: action.payload,
 			};
 
+		case 'ADD_SECTION':
+			return {
+				...state,
+				courseToRegister: {
+					...state.courseToRegister,
+					sections: [
+						...state.courseToRegister.sections,
+						action.payload,
+					],
+				},
+			};
+
 		case 'ADD_COURSE':
 			return {
 				...state,

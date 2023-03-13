@@ -10,6 +10,16 @@ export const CourseContextProvider = ({ children }) => {
 		courses: [],
 		course: null,
 		current: null,
+		courseToRegister: {
+			name: '',
+			description: '',
+			price: 0,
+			discount: null,
+			category: '',
+			survey: '',
+			image: '',
+			sections: [],
+		},
 	});
 
 	const getCourses = async () => {
@@ -57,8 +67,17 @@ export const CourseContextProvider = ({ children }) => {
 		});
 	};
 
+	const addSection = (section) => {
+		dispatch({
+			type: 'ADD_SECTION',
+			payload: section,
+		});
+	};
+
 	return (
-		<CourseContext.Provider value={{ state, getCourses, getCourse }}>
+		<CourseContext.Provider
+			value={{ state, getCourses, getCourse, addSection }}
+		>
 			{children}
 		</CourseContext.Provider>
 	);

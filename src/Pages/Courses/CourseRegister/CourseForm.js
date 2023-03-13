@@ -1,15 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form as FormBt } from 'react-bootstrap';
 import { Checkbox } from '../../../components/Form/CheckBox';
 import { SelectInput } from '../../../components/Form/SelectInput';
 import { TextInput } from '../../../components/Form/TextInput';
+import { Loader } from '../../../components/shared/Loader';
+import { getCategories } from '../../../utils/getCategories';
 
 export const CourseForm = ({ errors, values, touched }) => {
 	const [hasDiscount, setHasDiscount] = useState(false);
+	const [categories, setCategories] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
 
 	const handleCheckboxChange = (event) => {
 		setHasDiscount(event.target.checked);
 	};
+
+	const loadCategories = async () => {
+		const data = await getCategories();
+		setCategories(data);
+		setIsLoading(false);
+	};
+
+	useEffect(() => {
+		loadCategories();
+	}, []);
+
+	if (isLoading) {
+		return <Loader />;
+	}
+
+	const categoriesOptions = categories.map((category) => ({
+		value: category.id,
+		label: category.name,
+	}));
 
 	return (
 		<>
@@ -69,12 +92,7 @@ export const CourseForm = ({ errors, values, touched }) => {
 					label='Categoría'
 					name='category'
 					defaultText='Selecciona una categoría'
-					options={[
-						{ value: '1', label: 'Desarrollo web' },
-						{ value: '2', label: 'Desarrollo móvil' },
-						{ value: '3', label: 'Diseño' },
-						{ value: '4', label: 'Marketing' },
-					]}
+					options={categoriesOptions}
 					isInvalid={!!errors.category && touched.category}
 				/>
 			</FormBt.Group>
